@@ -13,8 +13,10 @@ def prevision():
 
 def DataManager(d: DataHandler = None, fr: FeatureRecipe = None, fe: FeatureExtractor = None):
     d = DataHandler()
-    fr = FeatureRecipe(d)
-    pass
+    fr = FeatureRecipe(d.grouped_data)
+    fe = FeatureExtractor(d.grouped_data, fr.all)
+    
+    return fe.train_test
 
 
 #on appelera la fonction DataManager() de la facon suivante :

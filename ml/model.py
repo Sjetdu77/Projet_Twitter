@@ -10,7 +10,7 @@ class DataHandler:
         #self.csvfile2 = None
         #self.grouped_data = self.csvfile1(self.csvfile2)
 
-        return pd.read_csv('./data/labels.csv')
+        self.grouped_data = pd.read_csv('./data/labels.csv')
 
 class FeatureRecipe:
     """Feature processing class"""
@@ -23,12 +23,13 @@ class FeatureRecipe:
         self.datetime = []
 
         categories()
-        return {
-            'continous': self.continuous,
-            'categorical': self.categorical,
-            'discrete': self.discrete,
-            'datetime': self.datetime
-        }
+
+        self.all = [
+            self.continuous,
+            self.categorical,
+            self.discrete,
+            self.datetime
+        ]
 
     def categories():
         for i in data:
@@ -49,10 +50,9 @@ class FeatureExtractor:
     def __init__(self, data: pd.DataFrame, flist: list):
         """ Input : pandas.DataFrame, feature list to drop
             Output : X_train, X_test, y_train, y_test according to sklearn.model_selection.train_test_split"""
-        x = data['tweet']
-        y = data['class']
-
-        return tts(x, y)
+        y = None
+        if 'class' in data: y = data['class']
+        self.train_test = tts(x, y)
 
 
 class ModelBuilder:
