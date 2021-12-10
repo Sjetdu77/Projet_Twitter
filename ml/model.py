@@ -1,23 +1,47 @@
 import pandas as pd, numpy as np
+from datetime import datetime
 from sklearn.model_selection import train_test_split as tts
 
 class DataHandler:
     """Get data from sources"""
 
     def __init__(self):
-        self.csvfile1 = pd.read_csv('./data/labels.csv')
-        self.csvfile2 = None
-        self.grouped_data = None
+        #self.csvfile1 = pd.read_csv('./data/labels.csv')
+        #self.csvfile2 = None
+        #self.grouped_data = self.csvfile1(self.csvfile2)
+
+        return pd.read_csv('./data/labels.csv')
 
 class FeatureRecipe:
     """Feature processing class"""
 
     def __init__(self, data: pd.DataFrame):
         self.data = data
-        self.continuous = None
-        self.categorical = None
-        self.discrete = None
-        self.datetime = None
+        self.continuous = {}
+        self.categorical = {}
+        self.discrete = {}
+        self.datetime = {}
+
+        categories()
+        return {
+            'continous': self.continuous,
+            'categorical': self.categorical,
+            'discrete': self.discrete,
+            'datetime': self.datetime
+        }
+
+    def categories():
+        for i in data:
+            if data[i].dtype == 'float64':
+                self.continuous[i] = True
+                self.categorical[i] = False
+                self.discrete[i] = False
+            else:
+                self.continuous[i] = False
+                self.categorical[i] = True
+                self.discrete[i] = True
+
+            self.datetime[i] = False
 
 class FeatureExtractor:
     """Feature Extractor class"""
@@ -25,6 +49,8 @@ class FeatureExtractor:
     def __init__(self, data: pd.DataFrame, flist: list):
         """ Input : pandas.DataFrame, feature list to drop
             Output : X_train, X_test, y_train, y_test according to sklearn.model_selection.train_test_split"""
+        x = data['tweet']
+        y = data['class']
 
 
 class ModelBuilder:
