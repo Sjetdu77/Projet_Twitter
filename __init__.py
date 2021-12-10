@@ -1,1 +1,1 @@
-from ml import model
+from ml.model import *
