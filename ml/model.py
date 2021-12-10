@@ -5,7 +5,7 @@ class DataHandler:
     """Get data from sources"""
 
     def __init__(self):
-        self.csvfile1 = None
+        self.csvfile1 = pd.read_csv('./data/labels.csv')
         self.csvfile2 = None
         self.grouped_data = None
 
