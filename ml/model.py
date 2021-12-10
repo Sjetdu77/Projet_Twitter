@@ -52,6 +52,7 @@ class FeatureExtractor:
             Output : X_train, X_test, y_train, y_test according to sklearn.model_selection.train_test_split"""
         y = None
         if 'class' in data: y = data['class']
+        x = data['tweet']
         self.train_test = tts(x, y)
 
 

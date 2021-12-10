@@ -1,15 +1,8 @@
-<!DOCTYPE>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Twitter</title>
-  </head>
-  <body>
+{%- extends "layout.html" -%}
+{%- block body -%}
     <p>Write a sentence :</p>
     <form method="get" action="{{ url_for('prevision') }}">
       <input type="text" name="sentence">
       <input type="submit" value="Send">
     </form>
-  </body>
-</html>
+{%- endblock -%}

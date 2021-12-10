@@ -12,9 +12,9 @@ def prevision():
     return request.args['sentence']
 
 def DataManager(d: DataHandler = None, fr: FeatureRecipe = None, fe: FeatureExtractor = None):
-    d = DataHandler()
-    fr = FeatureRecipe(d.grouped_data)
-    fe = FeatureExtractor(d.grouped_data, fr.all)
+    if d == None : d = DataHandler()
+    if fr == None : fr = FeatureRecipe(d.grouped_data)
+    if fe == None : fe = FeatureExtractor(d.grouped_data, fr.all)
     
     return fe.train_test
 
