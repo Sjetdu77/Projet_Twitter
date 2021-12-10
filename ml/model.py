@@ -17,10 +17,10 @@ class FeatureRecipe:
 
     def __init__(self, data: pd.DataFrame):
         self.data = data
-        self.continuous = {}
-        self.categorical = {}
-        self.discrete = {}
-        self.datetime = {}
+        self.continuous = []
+        self.categorical = []
+        self.discrete = []
+        self.datetime = []
 
         categories()
         return {
@@ -33,15 +33,15 @@ class FeatureRecipe:
     def categories():
         for i in data:
             if data[i].dtype == 'float64':
-                self.continuous[i] = True
-                self.categorical[i] = False
-                self.discrete[i] = False
+                self.continuous.append(True)
+                self.categorical.append(False)
+                self.discrete.append(False)
             else:
-                self.continuous[i] = False
-                self.categorical[i] = True
-                self.discrete[i] = True
+                self.continuous.append(False)
+                self.categorical.append(True)
+                self.discrete.append(True)
 
-            self.datetime[i] = False
+            self.datetime.append(False)
 
 class FeatureExtractor:
     """Feature Extractor class"""
@@ -51,6 +51,8 @@ class FeatureExtractor:
             Output : X_train, X_test, y_train, y_test according to sklearn.model_selection.train_test_split"""
         x = data['tweet']
         y = data['class']
+
+        return tts(x, y)
 
 
 class ModelBuilder:

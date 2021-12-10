@@ -7,10 +7,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/prevision')
+def prevision():
+    return "Work in progress"
+
 def DataManager(d: DataHandler = None, fr: FeatureRecipe = None, fe: FeatureExtractor = None):
-    """
-        Fonction qui lie les 3 premières classes de la pipeline et qui return FeatureExtractor.split(0.1)
-    """
+    d = DataHandler()
+    fr = FeatureRecipe(d)
     pass
 
 
