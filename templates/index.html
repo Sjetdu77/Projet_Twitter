@@ -6,6 +6,10 @@
     <title>Project Twitter</title>
   </head>
   <body>
-    <p>Site in progress</p>
+    <p>Write a sentence :</p>
+    <form method="get" action="{{ url_for('prevision') }}">
+      <input type="text" name="sentence">
+      <input type="submit" value="Send">
+    </form>
   </body>
 </html>

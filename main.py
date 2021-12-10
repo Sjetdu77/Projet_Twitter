@@ -7,9 +7,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/prevision')
+@app.route('/prevision', methods=["GET"])
 def prevision():
-    return "Work in progress"
+    return request.args['sentence']
 
 def DataManager(d: DataHandler = None, fr: FeatureRecipe = None, fe: FeatureExtractor = None):
     d = DataHandler()
